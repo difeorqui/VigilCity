@@ -1,0 +1,3720 @@
+{
+	"info": {
+		"_postman_id": "96c6ed49-9f49-4794-b3ca-7b46a0bb34d2",
+		"name": "VigilCity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8732514"
+	},
+	"item": [
+		{
+			"name": "PRBA",
+			"item": [
+				{
+					"name": "USUARIOS",
+					"item": [
+						{
+							"name": "/api/auth/register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the token in the collection variable 'token' if the status is 200\r",
+											"pm.test(\"Store the token in the collection variable 'token' if the status is 201\", function () {\r",
+											"    if (pm.response.to.have.status(201)) {\r",
+											"        pm.collectionVariables.set(\"token\", pm.response.json().token);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\",\n    \"rol\": \"usuario\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/auth/register",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\",\n    \"rol\": \"usuario\"\n}'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan1@example.com\",\n    \"contraseña\": \"a123456\",\n    \"rol\": \"usuario\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/auth/register",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "510"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1fe-N7vpH+G6BScQfgY505wqqlqvnho\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 22:50:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"createdAt\": \"2024-11-11T22:50:13.991Z\",\n        \"updatedAt\": \"2024-11-11T22:50:13.994Z\",\n        \"id\": \"6c3ba9ac-7352-408a-b8cc-da078e721420\",\n        \"fechaRegistro\": \"2024-11-11T22:50:13.991Z\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan1@example.com\",\n        \"contraseña\": \"$2a$10$zrbN218zKALuAP40gPCg9OXZ3X.OUdYEQU.sHTOaVBMC5SGHO4Qu6\",\n        \"rol\": \"usuario\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjM2JhOWFjLTczNTItNDA4YS1iOGNjLWRhMDc4ZTcyMTQyMCIsImlhdCI6MTczMTM2NTQxNCwiZXhwIjoxNzMxMzY5MDE0fQ.mtvfE5VuS7ff7Fg-NjEiLNaObEOk_K-x_p31AlIBQGY\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/users/{{userId}}/password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the token in the collection variable 'token' if the status is 200\r",
+											"pm.test(\"Store the token in the collection variable 'token' if the status is 201\", function () {\r",
+											"    if (pm.response.to.have.status(201)) {\r",
+											"        pm.collectionVariables.set(\"token\", pm.response.json().token);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contraseña\": \"123456\",\n    \"nuevaContraseña\": \"012345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/users/{{userId}}/password",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"{{userId}}",
+										"password"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\",\n    \"rol\": \"usuario\"\n}'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan1@example.com\",\n    \"contraseña\": \"a123456\",\n    \"rol\": \"usuario\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/auth/register",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "510"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1fe-N7vpH+G6BScQfgY505wqqlqvnho\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 22:50:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"createdAt\": \"2024-11-11T22:50:13.991Z\",\n        \"updatedAt\": \"2024-11-11T22:50:13.994Z\",\n        \"id\": \"6c3ba9ac-7352-408a-b8cc-da078e721420\",\n        \"fechaRegistro\": \"2024-11-11T22:50:13.991Z\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan1@example.com\",\n        \"contraseña\": \"$2a$10$zrbN218zKALuAP40gPCg9OXZ3X.OUdYEQU.sHTOaVBMC5SGHO4Qu6\",\n        \"rol\": \"usuario\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjM2JhOWFjLTczNTItNDA4YS1iOGNjLWRhMDc4ZTcyMTQyMCIsImlhdCI6MTczMTM2NTQxNCwiZXhwIjoxNzMxMzY5MDE0fQ.mtvfE5VuS7ff7Fg-NjEiLNaObEOk_K-x_p31AlIBQGY\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/users/{userId}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/users/e976cc49-227a-44a4-b3b4-ce18a1fe42d3",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"e976cc49-227a-44a4-b3b4-ce18a1fe42d3"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request DELETE 'http://localhost:3000/api/users/{userId}' \\\n--header 'Content-Type: application/json'"
+							},
+							"response": []
+						},
+						{
+							"name": "/api/users/{userId}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Juan Actualizado\",\n    \"email\": \"juan_actualizado@example.com\",\n    \"contraseña\": \"nueva_contraseña\",\n    \"rol\": \"usuario\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/users/f5f59a11-a035-4aae-a9ef-16848ba8231a",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"f5f59a11-a035-4aae-a9ef-16848ba8231a"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request PUT 'http://localhost:3000/api/users/{userId}' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"nombre\": \"Juan Actualizado\",\n    \"email\": \"juan_actualizado@example.com\",\n    \"contraseña\": \"nueva_contraseña\",\n    \"rol\": \"usuario\"\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "/api/users/{userId}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the 'id' parameter in a collection variable called \"userId\"\r",
+											"pm.test(\"Store the 'id' parameter in a collection variable called 'userId' when the response is equal to 200\", function () {\r",
+											"    if (pm.response.to.have.status(200)) {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        pm.collectionVariables.set(\"userId\", jsonData.id);\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/users/2d290d17-c462-4888-93e1-784ae20755b2",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"2d290d17-c462-4888-93e1-784ae20755b2"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request GET 'http://localhost:3000/api/users/be03c1df-d9a8-417c-9cd2-2c56c97a779d' \\\n--header 'Content-Type: application/json'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/users/2d290d17-c462-4888-93e1-784ae20755b2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"users",
+												"2d290d17-c462-4888-93e1-784ae20755b2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "302"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"12e-NJQDEguHlCs4QbTxUrwAssIwGxg\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 23:01:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"$2a$10$oYgaZNzDoYzxLru5ZSTOD.zm7O7USjbCKxkqY3mmhKFZyfhcUnmFa\",\n    \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n    \"rol\": \"usuario\",\n    \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n    \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n}"
+								},
+								{
+									"name": "/api/users/{userId}",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/users/2d290d17-c462-4888-93e1-784ae20755b2",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"2d290d17-c462-4888-93e1-784ae20755b2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "225"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e1-AdmgZ2r4GtJii+yJZV5jyZBvu1I\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 16:20:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n    \"rol\": \"usuario\",\n    \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n    \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/users",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request GET 'http://localhost:3000/api/users' \\\n--header 'Content-Type: application/json'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "304"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"130-vkCeqLkwfNtHbRaqwRqZqCII6/o\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 23:01:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan@example.com\",\n        \"contraseña\": \"$2a$10$oYgaZNzDoYzxLru5ZSTOD.zm7O7USjbCKxkqY3mmhKFZyfhcUnmFa\",\n        \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n        \"rol\": \"usuario\",\n        \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n        \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/auth/login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the token in the collection variable 'token' if the status is 200\r",
+											"pm.test(\"Store the token in the collection variable 'token' if the status is 200\", function () {\r",
+											"    if (pm.response.to.have.status(200)) {\r",
+											"        pm.collectionVariables.set(\"tokenVC\", pm.response.json().token);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"012345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/auth/login",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/auth/login' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/auth/login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/auth/login",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "509"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1fd-MRGZ8qCZ9AJZqL4twF9DdhFOsDM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 16:15:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan@example.com\",\n        \"contraseña\": \"$2a$10$oYgaZNzDoYzxLru5ZSTOD.zm7O7USjbCKxkqY3mmhKFZyfhcUnmFa\",\n        \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n        \"rol\": \"usuario\",\n        \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n        \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJkMjkwZDE3LWM0NjItNDg4OC05M2UxLTc4NGFlMjA3NTViMiIsImlhdCI6MTczMTc3Mzc1NiwiZXhwIjoxNzMxNzc3MzU2fQ.f_2ZSd3siEbX8QTcCOTi9wkhVCRddXzpNWUJxbDTUKg\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "RATING",
+					"item": [
+						{
+							"name": "/api/ratings",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random integer between 1 and 5 and store it in the collection variable 'rating'\r",
+											"pm.collectionVariables.set(\"rating\", Math.floor(Math.random() * 5) + 1);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"valor\": {{rating}},\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/ratings",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"ratings"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/ratings",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"valor\": {{rating}},\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/ratings",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "305"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"131-COwc5plrF5a8Bsd2+a+9UkzULJg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 21:51:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"createdAt\": \"2024-11-16T21:51:36.494Z\",\n    \"updatedAt\": \"2024-11-16T21:51:36.494Z\",\n    \"id\": \"f9354f5b-35cc-4543-acee-b7088278a70b\",\n    \"fechaCreacion\": \"2024-11-16T21:51:36.493Z\",\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"valor\": 4,\n    \"comentario\": \"solid state\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/ratings/:id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random integer between 1 and 5 and store it in the collection variable 'rating'\r",
+											"pm.collectionVariables.set(\"rating\", Math.floor(Math.random() * 5) + 1);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/ratings/5258e5fa-3cd1-40ce-abc0-52c58262fd52",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"5258e5fa-3cd1-40ce-abc0-52c58262fd52"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "valor",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"valor\": {{rating}}\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/5258e5fa-3cd1-40ce-abc0-52c58262fd52",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"5258e5fa-3cd1-40ce-abc0-52c58262fd52"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "278"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"116-aBx2tYqj8dalAjPhFESa2epJnZA\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:11:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"valor\": 2,\n    \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n    \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n    \"updatedAt\": \"2024-11-16T22:11:36.054Z\"\n}"
+								},
+								{
+									"name": "comentario",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/5258e5fa-3cd1-40ce-abc0-52c58262fd52",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"5258e5fa-3cd1-40ce-abc0-52c58262fd52"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "301"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"12d-C0mzIBKnHTQ0WLde5vFyqbK1a6Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:15:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"valor\": 2,\n    \"comentario\": \"digital\",\n    \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n    \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n    \"updatedAt\": \"2024-11-16T22:15:15.637Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/ratings/report/:id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/ratings/report/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"report",
+										"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/ratings/report/:id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/report/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"report",
+												"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "3937"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"f61-AhtBPpFn+UdwRB1Po2XJmjB9a+4\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:26:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"952eb68b-8550-47f2-98d7-6a8f63ba1f0e\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 5,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:12.104Z\",\n        \"createdAt\": \"2024-11-16T21:51:12.104Z\",\n        \"updatedAt\": \"2024-11-16T21:51:12.105Z\"\n    },\n    {\n        \"id\": \"3b9275da-a146-4c75-9214-cedce09cc627\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"cross-platform\",\n        \"fechaCreacion\": \"2024-11-16T21:51:14.152Z\",\n        \"createdAt\": \"2024-11-16T21:51:14.152Z\",\n        \"updatedAt\": \"2024-11-16T21:51:14.152Z\"\n    },\n    {\n        \"id\": \"fabe774e-9e42-4f53-a129-b0a6a51476d2\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 5,\n        \"comentario\": \"auxiliary\",\n        \"fechaCreacion\": \"2024-11-16T21:51:16.020Z\",\n        \"createdAt\": \"2024-11-16T21:51:16.020Z\",\n        \"updatedAt\": \"2024-11-16T21:51:16.021Z\"\n    },\n    {\n        \"id\": \"b243c56b-8a46-4012-8b77-f32a30bb30fa\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"primary\",\n        \"fechaCreacion\": \"2024-11-16T21:51:17.838Z\",\n        \"createdAt\": \"2024-11-16T21:51:17.838Z\",\n        \"updatedAt\": \"2024-11-16T21:51:17.838Z\"\n    },\n    {\n        \"id\": \"1e9dba0a-9247-4a3e-9077-4a7b3863a3a2\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 2,\n        \"comentario\": \"auxiliary\",\n        \"fechaCreacion\": \"2024-11-16T21:51:19.142Z\",\n        \"createdAt\": \"2024-11-16T21:51:19.142Z\",\n        \"updatedAt\": \"2024-11-16T21:51:19.142Z\"\n    },\n    {\n        \"id\": \"60e5b8cb-1980-4df3-b2e9-8d2d352dc8f0\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 4,\n        \"comentario\": \"solid state\",\n        \"fechaCreacion\": \"2024-11-16T21:51:21.308Z\",\n        \"createdAt\": \"2024-11-16T21:51:21.308Z\",\n        \"updatedAt\": \"2024-11-16T21:51:21.308Z\"\n    },\n    {\n        \"id\": \"080c4c9c-522d-4d29-a54c-53f72a7a2f21\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 4,\n        \"comentario\": \"digital\",\n        \"fechaCreacion\": \"2024-11-16T21:51:22.828Z\",\n        \"createdAt\": \"2024-11-16T21:51:22.828Z\",\n        \"updatedAt\": \"2024-11-16T21:51:22.828Z\"\n    },\n    {\n        \"id\": \"69fa7327-0f13-4910-a23b-faf6dcd75731\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:23.960Z\",\n        \"createdAt\": \"2024-11-16T21:51:23.960Z\",\n        \"updatedAt\": \"2024-11-16T21:51:23.960Z\"\n    },\n    {\n        \"id\": \"494b8537-ae2b-4e21-9462-24917084127e\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 2,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:28.130Z\",\n        \"createdAt\": \"2024-11-16T21:51:28.130Z\",\n        \"updatedAt\": \"2024-11-16T21:51:28.130Z\"\n    },\n    {\n        \"id\": \"9962165b-0f8f-46a8-a660-c3ea17491ca8\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 1,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:29.817Z\",\n        \"createdAt\": \"2024-11-16T21:51:29.817Z\",\n        \"updatedAt\": \"2024-11-16T21:51:29.817Z\"\n    },\n    {\n        \"id\": \"aa808e5e-d002-443b-a99f-830ad4ad2e91\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"haptic\",\n        \"fechaCreacion\": \"2024-11-16T21:51:34.462Z\",\n        \"createdAt\": \"2024-11-16T21:51:34.462Z\",\n        \"updatedAt\": \"2024-11-16T21:51:34.462Z\"\n    },\n    {\n        \"id\": \"f9354f5b-35cc-4543-acee-b7088278a70b\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 4,\n        \"comentario\": \"solid state\",\n        \"fechaCreacion\": \"2024-11-16T21:51:36.493Z\",\n        \"createdAt\": \"2024-11-16T21:51:36.494Z\",\n        \"updatedAt\": \"2024-11-16T21:51:36.494Z\"\n    },\n    {\n        \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 2,\n        \"comentario\": \"digital\",\n        \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n        \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n        \"updatedAt\": \"2024-11-16T22:15:15.637Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/ratings/user",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/ratings/user",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"user"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/ratings/user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/user",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"user"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "11625"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2d69-H9ki7PXBkliLaeECX4c+Iy2ZJ38\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:27:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"eabb9c63-6d94-47ed-88e0-32a0d0c55107\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"id\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.58381400000000000000000000\",\n        \"longitud\": \"-74.21667300000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:40.235Z\",\n        \"createdAt\": \"2024-11-16T18:56:40.235Z\",\n        \"updatedAt\": \"2024-11-16T18:56:40.235Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"936dfa9d-f959-4318-84dd-c6dfa99d2f5c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"delectus veniam ut\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57939400000000000000000000\",\n        \"longitud\": \"-74.21406200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:50.834Z\",\n        \"createdAt\": \"2024-11-16T18:56:50.834Z\",\n        \"updatedAt\": \"2024-11-16T18:56:50.834Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"8bbe49aa-bd7f-4fcf-88d3-cf466a0537fb\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"voluptatem\",\n        \"categoria\": \"Asalto en transporte público\",\n        \"latitud\": \"4.57231300000000000000000000\",\n        \"longitud\": \"-74.22019000000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:54.234Z\",\n        \"createdAt\": \"2024-11-16T18:56:54.234Z\",\n        \"updatedAt\": \"2024-11-16T18:56:54.235Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"84f4301f-fe7c-4680-baa3-f982ea7b36de\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Ut voluptates assumenda. Commodi et debitis aliquid possimus quia. Nisi beatae earum fugit necessitatibus officiis. Excepturi est unde.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.58193600000000000000000000\",\n        \"longitud\": \"-74.21044200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:56.977Z\",\n        \"createdAt\": \"2024-11-16T18:56:56.977Z\",\n        \"updatedAt\": \"2024-11-16T18:56:56.977Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"601e6cee-0326-4850-ac4c-d6427c46b5fd\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Eos quibusdam quasi pariatur reiciendis sunt omnis et quis rerum. Sed voluptatum dolor.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57252300000000000000000000\",\n        \"longitud\": \"-74.20567800000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:02.204Z\",\n        \"createdAt\": \"2024-11-16T18:57:02.204Z\",\n        \"updatedAt\": \"2024-11-16T18:57:02.204Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"28ee7809-8595-429c-ae9b-81c3b3f248b9\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Odio vitae vero reiciendis repellendus perspiciatis qui perferendis similique. Voluptas a neque unde officiis velit delectus nam. Ut delectus nam. Quia adipisci cupiditate. Autem consequuntur maxime.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.57944900000000000000000000\",\n        \"longitud\": \"-74.22103700000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:09.922Z\",\n        \"createdAt\": \"2024-11-16T18:57:09.922Z\",\n        \"updatedAt\": \"2024-11-16T18:57:09.923Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"e5655044-ed2e-423c-b25e-d6d136b16949\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"quae\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57041800000000000000000000\",\n        \"longitud\": \"-74.21486200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:14.474Z\",\n        \"createdAt\": \"2024-11-16T18:57:14.474Z\",\n        \"updatedAt\": \"2024-11-16T18:57:14.474Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"9ab0aa05-3bfd-4d84-a355-19492f230072\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Et culpa commodi odit. Distinctio iusto magni rerum odio suscipit debitis pariatur delectus. Culpa sit minus eaque quo voluptas. Voluptas eaque non pariatur quis aut est. Sit vel rerum et iste omnis consequatur nisi laboriosam aut.\",\n        \"categoria\": \"Robo\",\n        \"latitud\": \"4.58081900000000000000000000\",\n        \"longitud\": \"-74.21725200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:18.896Z\",\n        \"createdAt\": \"2024-11-16T18:57:18.896Z\",\n        \"updatedAt\": \"2024-11-16T18:57:18.896Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Incidunt commodi et error. Error libero voluptatem maxime similique. Earum quasi voluptate quasi quod libero sint reiciendis. Architecto pariatur facilis facilis sint. Tenetur aut amet. Nihil inventore deserunt molestias iste eius sit in.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57906400000000000000000000\",\n        \"longitud\": \"-74.21057400000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:26.310Z\",\n        \"createdAt\": \"2024-11-16T18:57:26.310Z\",\n        \"updatedAt\": \"2024-11-16T18:57:26.310Z\",\n        \"ratings\": [\n            {\n                \"id\": \"952eb68b-8550-47f2-98d7-6a8f63ba1f0e\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 5,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:12.104Z\",\n                \"createdAt\": \"2024-11-16T21:51:12.104Z\",\n                \"updatedAt\": \"2024-11-16T21:51:12.105Z\"\n            },\n            {\n                \"id\": \"3b9275da-a146-4c75-9214-cedce09cc627\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"cross-platform\",\n                \"fechaCreacion\": \"2024-11-16T21:51:14.152Z\",\n                \"createdAt\": \"2024-11-16T21:51:14.152Z\",\n                \"updatedAt\": \"2024-11-16T21:51:14.152Z\"\n            },\n            {\n                \"id\": \"fabe774e-9e42-4f53-a129-b0a6a51476d2\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 5,\n                \"comentario\": \"auxiliary\",\n                \"fechaCreacion\": \"2024-11-16T21:51:16.020Z\",\n                \"createdAt\": \"2024-11-16T21:51:16.020Z\",\n                \"updatedAt\": \"2024-11-16T21:51:16.021Z\"\n            },\n            {\n                \"id\": \"b243c56b-8a46-4012-8b77-f32a30bb30fa\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"primary\",\n                \"fechaCreacion\": \"2024-11-16T21:51:17.838Z\",\n                \"createdAt\": \"2024-11-16T21:51:17.838Z\",\n                \"updatedAt\": \"2024-11-16T21:51:17.838Z\"\n            },\n            {\n                \"id\": \"1e9dba0a-9247-4a3e-9077-4a7b3863a3a2\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 2,\n                \"comentario\": \"auxiliary\",\n                \"fechaCreacion\": \"2024-11-16T21:51:19.142Z\",\n                \"createdAt\": \"2024-11-16T21:51:19.142Z\",\n                \"updatedAt\": \"2024-11-16T21:51:19.142Z\"\n            },\n            {\n                \"id\": \"60e5b8cb-1980-4df3-b2e9-8d2d352dc8f0\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 4,\n                \"comentario\": \"solid state\",\n                \"fechaCreacion\": \"2024-11-16T21:51:21.308Z\",\n                \"createdAt\": \"2024-11-16T21:51:21.308Z\",\n                \"updatedAt\": \"2024-11-16T21:51:21.308Z\"\n            },\n            {\n                \"id\": \"080c4c9c-522d-4d29-a54c-53f72a7a2f21\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 4,\n                \"comentario\": \"digital\",\n                \"fechaCreacion\": \"2024-11-16T21:51:22.828Z\",\n                \"createdAt\": \"2024-11-16T21:51:22.828Z\",\n                \"updatedAt\": \"2024-11-16T21:51:22.828Z\"\n            },\n            {\n                \"id\": \"69fa7327-0f13-4910-a23b-faf6dcd75731\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:23.960Z\",\n                \"createdAt\": \"2024-11-16T21:51:23.960Z\",\n                \"updatedAt\": \"2024-11-16T21:51:23.960Z\"\n            },\n            {\n                \"id\": \"494b8537-ae2b-4e21-9462-24917084127e\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 2,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:28.130Z\",\n                \"createdAt\": \"2024-11-16T21:51:28.130Z\",\n                \"updatedAt\": \"2024-11-16T21:51:28.130Z\"\n            },\n            {\n                \"id\": \"9962165b-0f8f-46a8-a660-c3ea17491ca8\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 1,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:29.817Z\",\n                \"createdAt\": \"2024-11-16T21:51:29.817Z\",\n                \"updatedAt\": \"2024-11-16T21:51:29.817Z\"\n            },\n            {\n                \"id\": \"aa808e5e-d002-443b-a99f-830ad4ad2e91\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"haptic\",\n                \"fechaCreacion\": \"2024-11-16T21:51:34.462Z\",\n                \"createdAt\": \"2024-11-16T21:51:34.462Z\",\n                \"updatedAt\": \"2024-11-16T21:51:34.462Z\"\n            },\n            {\n                \"id\": \"f9354f5b-35cc-4543-acee-b7088278a70b\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 4,\n                \"comentario\": \"solid state\",\n                \"fechaCreacion\": \"2024-11-16T21:51:36.493Z\",\n                \"createdAt\": \"2024-11-16T21:51:36.494Z\",\n                \"updatedAt\": \"2024-11-16T21:51:36.494Z\"\n            },\n            {\n                \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 2,\n                \"comentario\": \"digital\",\n                \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n                \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n                \"updatedAt\": \"2024-11-16T22:15:15.637Z\"\n            }\n        ]\n    },\n    {\n        \"id\": \"13db69bc-8152-4769-b3f7-7d7af9669658\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Laboriosam nostrum enim. Aperiam laborum dolores vel sint. Suscipit facilis quia quia ea amet fugit ut debitis. Dolores sequi mollitia ea.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.57606896096619900000000000\",\n        \"longitud\": \"-74.20625934050766000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:03:14.945Z\",\n        \"createdAt\": \"2024-11-16T19:03:14.945Z\",\n        \"updatedAt\": \"2024-11-16T19:03:14.945Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"a90de6cb-a2d3-4dc8-a52c-2262ca8cd0d1\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"ipsam\",\n        \"categoria\": \"Drogadicción\",\n        \"latitud\": \"4.58252979892958800000000000\",\n        \"longitud\": \"-74.22053529058005000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:30.943Z\",\n        \"createdAt\": \"2024-11-16T19:04:30.943Z\",\n        \"updatedAt\": \"2024-11-16T19:04:30.944Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"da3a9891-84a9-4a16-a892-bc53ea4164f4\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Consequuntur eaque non aut sed accusantium. Nesciunt expedita voluptatibus fugit necessitatibus eligendi ut dolores voluptatem. Iusto ut eos vitae quibusdam sed illo est illo.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.56751097027122800000000000\",\n        \"longitud\": \"-74.22070091655665000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:34.708Z\",\n        \"createdAt\": \"2024-11-16T19:04:34.708Z\",\n        \"updatedAt\": \"2024-11-16T19:04:34.708Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"4d3eeed5-67bd-44b6-a348-6232c5475165\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Nemo atque quis magni. Enim pariatur laborum praesentium optio velit magnam dolor. Fugiat dolor ut qui voluptate et vel voluptas. Amet doloribus dolor quo natus non dolorem.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.57222110572138350000000000\",\n        \"longitud\": \"-74.22116916308462000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:37.591Z\",\n        \"createdAt\": \"2024-11-16T19:04:37.591Z\",\n        \"updatedAt\": \"2024-11-16T19:04:37.591Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"749cd2d7-282e-4ecb-923e-1c8c2986321c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"modi\",\n        \"categoria\": \"Asalto en transporte público\",\n        \"latitud\": \"4.58026198047801300000000000\",\n        \"longitud\": \"-74.21238349731848000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:38.725Z\",\n        \"createdAt\": \"2024-11-16T19:04:38.725Z\",\n        \"updatedAt\": \"2024-11-16T19:04:38.725Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"1790b304-19d9-40b3-91d1-971337068348\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Quia est laborum facilis omnis alias dolorem quis.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.56753945392566700000000000\",\n        \"longitud\": \"-74.21383218742598000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:05:40.629Z\",\n        \"createdAt\": \"2024-11-16T19:05:40.629Z\",\n        \"updatedAt\": \"2024-11-16T19:05:40.629Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"b6c4827f-f9f9-489b-bba2-7243b320a459\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"At consectetur quas est occaecati et ad.\",\n        \"categoria\": \"Robo\",\n        \"latitud\": \"4.57435465844518400000000000\",\n        \"longitud\": \"-74.21381836930105000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:06:07.832Z\",\n        \"createdAt\": \"2024-11-16T19:06:07.832Z\",\n        \"updatedAt\": \"2024-11-16T19:06:07.832Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"8b4d1168-20c8-4b0a-ae28-aa78cb30c32c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"enim\",\n        \"categoria\": \"Vandalismo\",\n        \"latitud\": \"4.58383216268944200000000000\",\n        \"longitud\": \"-74.21297846309724000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:06:24.575Z\",\n        \"createdAt\": \"2024-11-16T19:06:24.575Z\",\n        \"updatedAt\": \"2024-11-16T19:06:24.575Z\",\n        \"ratings\": []\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "REPORTES",
+					"item": [
+						{
+							"name": "/api/reportes",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generarCategoriaAleatoria() {\r",
+											"    const categorias = ['Iluminación', 'Robo', 'Vandalismo', 'Drogadicción', 'Vías en mal estado', 'Asalto en transporte público', 'Esquina peligrosa'];\r",
+											"    // Extraer un ítem aleatorio de la variable \"categorias\"\r",
+											"    let randomCategoria = categorias[Math.floor(Math.random() * categorias.length)];\r",
+											"    return randomCategoria;\r",
+											"}\r",
+											"\r",
+											"function generarCoordenadaAleatoria(lat, lon) {\r",
+											"    // Aproximación de grados por 1 km\r",
+											"    const kmToDegLat = 1 / 111; // 1 km en grados de latitud\r",
+											"    const kmToDegLon = 1 / (111 * Math.cos(Math.PI * lat / 180)); // Ajuste para longitud basado en latitud\r",
+											"\r",
+											"    // Generar un desplazamiento aleatorio dentro de un rango de -1 km a 1 km\r",
+											"    const deltaLat = (Math.random() * 2 - 1) * kmToDegLat;\r",
+											"    const deltaLon = (Math.random() * 2 - 1) * kmToDegLon;\r",
+											"\r",
+											"    // Nueva coordenada aleatoria\r",
+											"    const newLat = lat + deltaLat;\r",
+											"    const newLon = lon + deltaLon;\r",
+											"\r",
+											"    return { lat: newLat, lon: newLon };\r",
+											"}\r",
+											"\r",
+											"// Coordenadas iniciales\r",
+											"const latitud = parseFloat(pm.collectionVariables.get(\"baseLatitud\"));\r",
+											"const longitud = parseFloat(pm.collectionVariables.get(\"baseLongitud\"));\r",
+											"\r",
+											"console.log(longitud);\r",
+											"\r",
+											"// Generar una nueva coordenada aleatoria\r",
+											"const nuevaCoordenada = generarCoordenadaAleatoria(latitud, longitud);\r",
+											"\r",
+											"// console.log(`Nueva Latitud: ${nuevaCoordenada.lat}`);\r",
+											"// console.log(`Nueva Longitud: ${nuevaCoordenada.lon}`);\r",
+											"\r",
+											"// Almacenar el ítem aleatorio en la variable de colección \"categoria\"\r",
+											"pm.collectionVariables.set(\"categoria\", generarCategoriaAleatoria());\r",
+											"pm.collectionVariables.set(\"latitud\", nuevaCoordenada.lat);\r",
+											"pm.collectionVariables.set(\"longitud\", nuevaCoordenada.lon);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descripcion\": \"{{$randomLoremText}}\",\n    \"latitud\": {{latitud}},\n    \"longitud\": {{longitud}},\n    \"categoria\": \"{{categoria}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prba}}/api/reportes",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"reportes"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/reportes",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/reportes",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"reportes"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "344"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"158-6+Sofl/JmsnotQr5mRNXj+2NPPE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 18:02:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"createdAt\": \"2024-11-16T18:02:28.476Z\",\n    \"updatedAt\": \"2024-11-16T18:02:28.478Z\",\n    \"id\": \"58d7d518-58b9-4e4d-bc2b-e523602feaaa\",\n    \"fechaCreacion\": \"2024-11-16T18:02:28.475Z\",\n    \"descripcion\": \"Descripción del incidente\",\n    \"latitud\": \"12.345678\",\n    \"longitud\": \"98.765432\",\n    \"categoria\": \"Categoría del incidente\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/reportes",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generarCoordenadaAleatoria(lat, lon) {\r",
+											"    const rango = Math.random();\r",
+											"    console.log(`Rango: ${rango}`);\r",
+											"    // Aproximación de grados \r",
+											"    const kmToDegLat = rango / 111; // 1 km en grados de latitud\r",
+											"    const kmToDegLon = rango / (111 * Math.cos(Math.PI * lat / 180)); // Ajuste para longitud basado en latitud\r",
+											"\r",
+											"    // Generar un desplazamiento aleatorio dentro de un rango de -1 km a 1 km\r",
+											"    const deltaLat = (Math.random() * 2 - rango) * kmToDegLat;\r",
+											"    const deltaLon = (Math.random() * 2 - rango) * kmToDegLon;\r",
+											"\r",
+											"    // Nueva coordenada aleatoria\r",
+											"    const newLat = lat + deltaLat;\r",
+											"    const newLon = lon + deltaLon;\r",
+											"\r",
+											"    return { lat: newLat, lon: newLon };\r",
+											"}\r",
+											"\r",
+											"// Coordenadas iniciales\r",
+											"const latitud = parseFloat(pm.collectionVariables.get(\"baseLatitud\"));\r",
+											"const longitud = parseFloat(pm.collectionVariables.get(\"baseLongitud\"));\r",
+											"// const latitud = 4.575000;\r",
+											"// const longitud = -74.214000;\r",
+											"\r",
+											"// Generar una nueva coordenada aleatoria\r",
+											"const nuevaCoordenada = generarCoordenadaAleatoria(latitud, longitud);\r",
+											"\r",
+											"pm.collectionVariables.set(\"latitud\", nuevaCoordenada.lat);\r",
+											"pm.collectionVariables.set(\"longitud\", nuevaCoordenada.lon);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/reportes?latitud={{latitud}}&longitud={{longitud}}&rango=1",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "latitud",
+											"value": "{{latitud}}"
+										},
+										{
+											"key": "longitud",
+											"value": "{{longitud}}"
+										},
+										{
+											"key": "rango",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/reportes",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/reportes?latitud={{latitud}}&longitud={{longitud}}&rango=1",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"reportes"
+											],
+											"query": [
+												{
+													"key": "latitud",
+													"value": "{{latitud}}"
+												},
+												{
+													"key": "longitud",
+													"value": "{{longitud}}"
+												},
+												{
+													"key": "rango",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "4538"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"11ba-z02tbX78vHaxI32gh+mQc6iR8ug\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:43:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"936dfa9d-f959-4318-84dd-c6dfa99d2f5c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"delectus veniam ut\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57939400000000000000000000\",\n        \"longitud\": \"-74.21406200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:50.834Z\",\n        \"createdAt\": \"2024-11-16T18:56:50.834Z\",\n        \"updatedAt\": \"2024-11-16T18:56:50.834Z\",\n        \"distanciaLineal\": 1060.89728726091,\n        \"rating\": null\n    },\n    {\n        \"id\": \"8bbe49aa-bd7f-4fcf-88d3-cf466a0537fb\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"voluptatem\",\n        \"categoria\": \"Asalto en transporte público\",\n        \"latitud\": \"4.57231300000000000000000000\",\n        \"longitud\": \"-74.22019000000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:54.234Z\",\n        \"createdAt\": \"2024-11-16T18:56:54.234Z\",\n        \"updatedAt\": \"2024-11-16T18:56:54.235Z\",\n        \"distanciaLineal\": 268.49359568507225,\n        \"rating\": null\n    },\n    {\n        \"id\": \"28ee7809-8595-429c-ae9b-81c3b3f248b9\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Odio vitae vero reiciendis repellendus perspiciatis qui perferendis similique. Voluptas a neque unde officiis velit delectus nam. Ut delectus nam. Quia adipisci cupiditate. Autem consequuntur maxime.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.57944900000000000000000000\",\n        \"longitud\": \"-74.22103700000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:09.922Z\",\n        \"createdAt\": \"2024-11-16T18:57:09.922Z\",\n        \"updatedAt\": \"2024-11-16T18:57:09.923Z\",\n        \"distanciaLineal\": 1006.0565263516352,\n        \"rating\": null\n    },\n    {\n        \"id\": \"e5655044-ed2e-423c-b25e-d6d136b16949\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"quae\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57041800000000000000000000\",\n        \"longitud\": \"-74.21486200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:14.474Z\",\n        \"createdAt\": \"2024-11-16T18:57:14.474Z\",\n        \"updatedAt\": \"2024-11-16T18:57:14.474Z\",\n        \"distanciaLineal\": 381.50252976188335,\n        \"rating\": null\n    },\n    {\n        \"id\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Incidunt commodi et error. Error libero voluptatem maxime similique. Earum quasi voluptate quasi quod libero sint reiciendis. Architecto pariatur facilis facilis sint. Tenetur aut amet. Nihil inventore deserunt molestias iste eius sit in.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57906400000000000000000000\",\n        \"longitud\": \"-74.21057400000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:26.310Z\",\n        \"createdAt\": \"2024-11-16T18:57:26.310Z\",\n        \"updatedAt\": \"2024-11-16T18:57:26.310Z\",\n        \"distanciaLineal\": 1252.1377638734668,\n        \"rating\": 3.1538461538461537\n    },\n    {\n        \"id\": \"da3a9891-84a9-4a16-a892-bc53ea4164f4\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Consequuntur eaque non aut sed accusantium. Nesciunt expedita voluptatibus fugit necessitatibus eligendi ut dolores voluptatem. Iusto ut eos vitae quibusdam sed illo est illo.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.56751097027122800000000000\",\n        \"longitud\": \"-74.22070091655665000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:34.708Z\",\n        \"createdAt\": \"2024-11-16T19:04:34.708Z\",\n        \"updatedAt\": \"2024-11-16T19:04:34.708Z\",\n        \"distanciaLineal\": 456.27813452456036,\n        \"rating\": null\n    },\n    {\n        \"id\": \"4d3eeed5-67bd-44b6-a348-6232c5475165\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Nemo atque quis magni. Enim pariatur laborum praesentium optio velit magnam dolor. Fugiat dolor ut qui voluptate et vel voluptas. Amet doloribus dolor quo natus non dolorem.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.57222110572138350000000000\",\n        \"longitud\": \"-74.22116916308462000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:37.591Z\",\n        \"createdAt\": \"2024-11-16T19:04:37.591Z\",\n        \"updatedAt\": \"2024-11-16T19:04:37.591Z\",\n        \"distanciaLineal\": 355.77521530444716,\n        \"rating\": null\n    },\n    {\n        \"id\": \"1790b304-19d9-40b3-91d1-971337068348\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Quia est laborum facilis omnis alias dolorem quis.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.56753945392566700000000000\",\n        \"longitud\": \"-74.21383218742598000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:05:40.629Z\",\n        \"createdAt\": \"2024-11-16T19:05:40.629Z\",\n        \"updatedAt\": \"2024-11-16T19:05:40.629Z\",\n        \"distanciaLineal\": 613.8029771436267,\n        \"rating\": null\n    },\n    {\n        \"id\": \"b6c4827f-f9f9-489b-bba2-7243b320a459\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"At consectetur quas est occaecati et ad.\",\n        \"categoria\": \"Robo\",\n        \"latitud\": \"4.57435465844518400000000000\",\n        \"longitud\": \"-74.21381836930105000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:06:07.832Z\",\n        \"createdAt\": \"2024-11-16T19:06:07.832Z\",\n        \"updatedAt\": \"2024-11-16T19:06:07.832Z\",\n        \"distanciaLineal\": 630.9874755917133,\n        \"rating\": null\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/reportes/:id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/reportes/b94f28c3-613f-4e26-aee8-7d64c720918d",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"reportes",
+										"b94f28c3-613f-4e26-aee8-7d64c720918d"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/reportes/:id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/reportes/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"reportes",
+												"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "617"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"269-J5d5Q/meIHEXshGdHUGB1VVmlUs\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:42:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"descripcion\": \"Incidunt commodi et error. Error libero voluptatem maxime similique. Earum quasi voluptate quasi quod libero sint reiciendis. Architecto pariatur facilis facilis sint. Tenetur aut amet. Nihil inventore deserunt molestias iste eius sit in.\",\n    \"categoria\": \"Esquina peligrosa\",\n    \"latitud\": \"4.57906400000000000000000000\",\n    \"longitud\": \"-74.21057400000000000000000000\",\n    \"fechaCreacion\": \"2024-11-16T18:57:26.310Z\",\n    \"createdAt\": \"2024-11-16T18:57:26.310Z\",\n    \"updatedAt\": \"2024-11-16T18:57:26.310Z\",\n    \"rating\": 3.1538461538461537\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/reportes/{{id}}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prba}}/api/reportes/26df3c44-ab26-449e-a223-7b0082d9d56d",
+									"host": [
+										"{{host_prba}}"
+									],
+									"path": [
+										"api",
+										"reportes",
+										"26df3c44-ab26-449e-a223-7b0082d9d56d"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PROD",
+			"item": [
+				{
+					"name": "USUARIOS",
+					"item": [
+						{
+							"name": "/api/auth/register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the token in the collection variable 'token' if the status is 200\r",
+											"pm.test(\"Store the token in the collection variable 'token' if the status is 201\", function () {\r",
+											"    if (pm.response.to.have.status(201)) {\r",
+											"        pm.collectionVariables.set(\"token\", pm.response.json().token);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\",\n    \"rol\": \"usuario\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/auth/register",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\",\n    \"rol\": \"usuario\"\n}'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan1@example.com\",\n    \"contraseña\": \"a123456\",\n    \"rol\": \"usuario\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/auth/register",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "510"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1fe-N7vpH+G6BScQfgY505wqqlqvnho\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 22:50:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"createdAt\": \"2024-11-11T22:50:13.991Z\",\n        \"updatedAt\": \"2024-11-11T22:50:13.994Z\",\n        \"id\": \"6c3ba9ac-7352-408a-b8cc-da078e721420\",\n        \"fechaRegistro\": \"2024-11-11T22:50:13.991Z\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan1@example.com\",\n        \"contraseña\": \"$2a$10$zrbN218zKALuAP40gPCg9OXZ3X.OUdYEQU.sHTOaVBMC5SGHO4Qu6\",\n        \"rol\": \"usuario\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjM2JhOWFjLTczNTItNDA4YS1iOGNjLWRhMDc4ZTcyMTQyMCIsImlhdCI6MTczMTM2NTQxNCwiZXhwIjoxNzMxMzY5MDE0fQ.mtvfE5VuS7ff7Fg-NjEiLNaObEOk_K-x_p31AlIBQGY\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/users/{{userId}}/password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the token in the collection variable 'token' if the status is 200\r",
+											"pm.test(\"Store the token in the collection variable 'token' if the status is 201\", function () {\r",
+											"    if (pm.response.to.have.status(201)) {\r",
+											"        pm.collectionVariables.set(\"token\", pm.response.json().token);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contraseña\": \"123456\",\n    \"nuevaContraseña\": \"012345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/users/{{userId}}/password",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"{{userId}}",
+										"password"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\",\n    \"rol\": \"usuario\"\n}'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"Juan\",\n    \"email\": \"juan1@example.com\",\n    \"contraseña\": \"a123456\",\n    \"rol\": \"usuario\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/auth/register",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "510"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1fe-N7vpH+G6BScQfgY505wqqlqvnho\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 22:50:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"createdAt\": \"2024-11-11T22:50:13.991Z\",\n        \"updatedAt\": \"2024-11-11T22:50:13.994Z\",\n        \"id\": \"6c3ba9ac-7352-408a-b8cc-da078e721420\",\n        \"fechaRegistro\": \"2024-11-11T22:50:13.991Z\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan1@example.com\",\n        \"contraseña\": \"$2a$10$zrbN218zKALuAP40gPCg9OXZ3X.OUdYEQU.sHTOaVBMC5SGHO4Qu6\",\n        \"rol\": \"usuario\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjM2JhOWFjLTczNTItNDA4YS1iOGNjLWRhMDc4ZTcyMTQyMCIsImlhdCI6MTczMTM2NTQxNCwiZXhwIjoxNzMxMzY5MDE0fQ.mtvfE5VuS7ff7Fg-NjEiLNaObEOk_K-x_p31AlIBQGY\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/users/{userId}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/users/e976cc49-227a-44a4-b3b4-ce18a1fe42d3",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"e976cc49-227a-44a4-b3b4-ce18a1fe42d3"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request DELETE 'http://localhost:3000/api/users/{userId}' \\\n--header 'Content-Type: application/json'"
+							},
+							"response": []
+						},
+						{
+							"name": "/api/users/{userId}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Juan Actualizado\",\n    \"email\": \"juan_actualizado@example.com\",\n    \"contraseña\": \"nueva_contraseña\",\n    \"rol\": \"usuario\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/users/f5f59a11-a035-4aae-a9ef-16848ba8231a",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"f5f59a11-a035-4aae-a9ef-16848ba8231a"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request PUT 'http://localhost:3000/api/users/{userId}' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"nombre\": \"Juan Actualizado\",\n    \"email\": \"juan_actualizado@example.com\",\n    \"contraseña\": \"nueva_contraseña\",\n    \"rol\": \"usuario\"\n}'"
+							},
+							"response": []
+						},
+						{
+							"name": "/api/users/{userId}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the 'id' parameter in a collection variable called \"userId\"\r",
+											"pm.test(\"Store the 'id' parameter in a collection variable called 'userId' when the response is equal to 200\", function () {\r",
+											"    if (pm.response.to.have.status(200)) {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        pm.collectionVariables.set(\"userId\", jsonData.id);\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/users/2d290d17-c462-4888-93e1-784ae20755b2",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"2d290d17-c462-4888-93e1-784ae20755b2"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request GET 'http://localhost:3000/api/users/be03c1df-d9a8-417c-9cd2-2c56c97a779d' \\\n--header 'Content-Type: application/json'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/users/2d290d17-c462-4888-93e1-784ae20755b2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"users",
+												"2d290d17-c462-4888-93e1-784ae20755b2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "302"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"12e-NJQDEguHlCs4QbTxUrwAssIwGxg\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 23:01:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"$2a$10$oYgaZNzDoYzxLru5ZSTOD.zm7O7USjbCKxkqY3mmhKFZyfhcUnmFa\",\n    \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n    \"rol\": \"usuario\",\n    \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n    \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n}"
+								},
+								{
+									"name": "/api/users/{userId}",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/users/2d290d17-c462-4888-93e1-784ae20755b2",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"2d290d17-c462-4888-93e1-784ae20755b2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "225"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e1-AdmgZ2r4GtJii+yJZV5jyZBvu1I\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 16:20:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"nombre\": \"Juan\",\n    \"email\": \"juan@example.com\",\n    \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n    \"rol\": \"usuario\",\n    \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n    \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/users",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request GET 'http://localhost:3000/api/users' \\\n--header 'Content-Type: application/json'"
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "304"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"130-vkCeqLkwfNtHbRaqwRqZqCII6/o\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Nov 2024 23:01:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan@example.com\",\n        \"contraseña\": \"$2a$10$oYgaZNzDoYzxLru5ZSTOD.zm7O7USjbCKxkqY3mmhKFZyfhcUnmFa\",\n        \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n        \"rol\": \"usuario\",\n        \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n        \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/auth/login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test to store the token in the collection variable 'token' if the status is 200\r",
+											"pm.test(\"Store the token in the collection variable 'token' if the status is 200\", function () {\r",
+											"    if (pm.response.to.have.status(200)) {\r",
+											"        pm.collectionVariables.set(\"tokenVC\", pm.response.json().token);\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"012345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/auth/login",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								},
+								"description": "Generated from cURL: curl --location --request POST 'http://localhost:3000/api/auth/login' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/auth/login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"juan@example.com\",\n    \"contraseña\": \"123456\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/auth/login",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "509"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1fd-MRGZ8qCZ9AJZqL4twF9DdhFOsDM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 16:15:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"id\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"nombre\": \"Juan\",\n        \"email\": \"juan@example.com\",\n        \"contraseña\": \"$2a$10$oYgaZNzDoYzxLru5ZSTOD.zm7O7USjbCKxkqY3mmhKFZyfhcUnmFa\",\n        \"fechaRegistro\": \"2024-11-11T22:54:36.196Z\",\n        \"rol\": \"usuario\",\n        \"createdAt\": \"2024-11-11T22:54:36.196Z\",\n        \"updatedAt\": \"2024-11-11T22:54:36.196Z\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJkMjkwZDE3LWM0NjItNDg4OC05M2UxLTc4NGFlMjA3NTViMiIsImlhdCI6MTczMTc3Mzc1NiwiZXhwIjoxNzMxNzc3MzU2fQ.f_2ZSd3siEbX8QTcCOTi9wkhVCRddXzpNWUJxbDTUKg\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "RATING",
+					"item": [
+						{
+							"name": "/api/ratings",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random integer between 1 and 5 and store it in the collection variable 'rating'\r",
+											"pm.collectionVariables.set(\"rating\", Math.floor(Math.random() * 5) + 1);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"valor\": {{rating}},\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/ratings",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"ratings"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/ratings",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"valor\": {{rating}},\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/ratings",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "305"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"131-COwc5plrF5a8Bsd2+a+9UkzULJg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 21:51:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"createdAt\": \"2024-11-16T21:51:36.494Z\",\n    \"updatedAt\": \"2024-11-16T21:51:36.494Z\",\n    \"id\": \"f9354f5b-35cc-4543-acee-b7088278a70b\",\n    \"fechaCreacion\": \"2024-11-16T21:51:36.493Z\",\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"valor\": 4,\n    \"comentario\": \"solid state\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/ratings/:id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random integer between 1 and 5 and store it in the collection variable 'rating'\r",
+											"pm.collectionVariables.set(\"rating\", Math.floor(Math.random() * 5) + 1);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/ratings/5258e5fa-3cd1-40ce-abc0-52c58262fd52",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"5258e5fa-3cd1-40ce-abc0-52c58262fd52"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "valor",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"valor\": {{rating}}\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/5258e5fa-3cd1-40ce-abc0-52c58262fd52",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"5258e5fa-3cd1-40ce-abc0-52c58262fd52"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "278"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"116-aBx2tYqj8dalAjPhFESa2epJnZA\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:11:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"valor\": 2,\n    \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n    \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n    \"updatedAt\": \"2024-11-16T22:11:36.054Z\"\n}"
+								},
+								{
+									"name": "comentario",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"comentario\": \"{{$randomAdjective}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/5258e5fa-3cd1-40ce-abc0-52c58262fd52",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"5258e5fa-3cd1-40ce-abc0-52c58262fd52"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "301"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"12d-C0mzIBKnHTQ0WLde5vFyqbK1a6Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:15:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n    \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"valor\": 2,\n    \"comentario\": \"digital\",\n    \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n    \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n    \"updatedAt\": \"2024-11-16T22:15:15.637Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/ratings/report/:id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/ratings/report/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"report",
+										"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/ratings/report/:id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/report/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"report",
+												"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "3937"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"f61-AhtBPpFn+UdwRB1Po2XJmjB9a+4\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:26:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"952eb68b-8550-47f2-98d7-6a8f63ba1f0e\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 5,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:12.104Z\",\n        \"createdAt\": \"2024-11-16T21:51:12.104Z\",\n        \"updatedAt\": \"2024-11-16T21:51:12.105Z\"\n    },\n    {\n        \"id\": \"3b9275da-a146-4c75-9214-cedce09cc627\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"cross-platform\",\n        \"fechaCreacion\": \"2024-11-16T21:51:14.152Z\",\n        \"createdAt\": \"2024-11-16T21:51:14.152Z\",\n        \"updatedAt\": \"2024-11-16T21:51:14.152Z\"\n    },\n    {\n        \"id\": \"fabe774e-9e42-4f53-a129-b0a6a51476d2\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 5,\n        \"comentario\": \"auxiliary\",\n        \"fechaCreacion\": \"2024-11-16T21:51:16.020Z\",\n        \"createdAt\": \"2024-11-16T21:51:16.020Z\",\n        \"updatedAt\": \"2024-11-16T21:51:16.021Z\"\n    },\n    {\n        \"id\": \"b243c56b-8a46-4012-8b77-f32a30bb30fa\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"primary\",\n        \"fechaCreacion\": \"2024-11-16T21:51:17.838Z\",\n        \"createdAt\": \"2024-11-16T21:51:17.838Z\",\n        \"updatedAt\": \"2024-11-16T21:51:17.838Z\"\n    },\n    {\n        \"id\": \"1e9dba0a-9247-4a3e-9077-4a7b3863a3a2\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 2,\n        \"comentario\": \"auxiliary\",\n        \"fechaCreacion\": \"2024-11-16T21:51:19.142Z\",\n        \"createdAt\": \"2024-11-16T21:51:19.142Z\",\n        \"updatedAt\": \"2024-11-16T21:51:19.142Z\"\n    },\n    {\n        \"id\": \"60e5b8cb-1980-4df3-b2e9-8d2d352dc8f0\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 4,\n        \"comentario\": \"solid state\",\n        \"fechaCreacion\": \"2024-11-16T21:51:21.308Z\",\n        \"createdAt\": \"2024-11-16T21:51:21.308Z\",\n        \"updatedAt\": \"2024-11-16T21:51:21.308Z\"\n    },\n    {\n        \"id\": \"080c4c9c-522d-4d29-a54c-53f72a7a2f21\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 4,\n        \"comentario\": \"digital\",\n        \"fechaCreacion\": \"2024-11-16T21:51:22.828Z\",\n        \"createdAt\": \"2024-11-16T21:51:22.828Z\",\n        \"updatedAt\": \"2024-11-16T21:51:22.828Z\"\n    },\n    {\n        \"id\": \"69fa7327-0f13-4910-a23b-faf6dcd75731\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:23.960Z\",\n        \"createdAt\": \"2024-11-16T21:51:23.960Z\",\n        \"updatedAt\": \"2024-11-16T21:51:23.960Z\"\n    },\n    {\n        \"id\": \"494b8537-ae2b-4e21-9462-24917084127e\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 2,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:28.130Z\",\n        \"createdAt\": \"2024-11-16T21:51:28.130Z\",\n        \"updatedAt\": \"2024-11-16T21:51:28.130Z\"\n    },\n    {\n        \"id\": \"9962165b-0f8f-46a8-a660-c3ea17491ca8\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 1,\n        \"comentario\": \"1080p\",\n        \"fechaCreacion\": \"2024-11-16T21:51:29.817Z\",\n        \"createdAt\": \"2024-11-16T21:51:29.817Z\",\n        \"updatedAt\": \"2024-11-16T21:51:29.817Z\"\n    },\n    {\n        \"id\": \"aa808e5e-d002-443b-a99f-830ad4ad2e91\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 3,\n        \"comentario\": \"haptic\",\n        \"fechaCreacion\": \"2024-11-16T21:51:34.462Z\",\n        \"createdAt\": \"2024-11-16T21:51:34.462Z\",\n        \"updatedAt\": \"2024-11-16T21:51:34.462Z\"\n    },\n    {\n        \"id\": \"f9354f5b-35cc-4543-acee-b7088278a70b\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 4,\n        \"comentario\": \"solid state\",\n        \"fechaCreacion\": \"2024-11-16T21:51:36.493Z\",\n        \"createdAt\": \"2024-11-16T21:51:36.494Z\",\n        \"updatedAt\": \"2024-11-16T21:51:36.494Z\"\n    },\n    {\n        \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n        \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"valor\": 2,\n        \"comentario\": \"digital\",\n        \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n        \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n        \"updatedAt\": \"2024-11-16T22:15:15.637Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/ratings/user",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/ratings/user",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"user"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:YOUR_PORT/api/ratings \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-d '{\n    \"reporteId\": \"REPORTE_ID\",\n    \"valor\": 5,\n    \"comentario\": \"Excelente reporte!\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/ratings/user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/ratings/user",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"ratings",
+												"user"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "11625"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2d69-H9ki7PXBkliLaeECX4c+Iy2ZJ38\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:27:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"eabb9c63-6d94-47ed-88e0-32a0d0c55107\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"id\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.58381400000000000000000000\",\n        \"longitud\": \"-74.21667300000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:40.235Z\",\n        \"createdAt\": \"2024-11-16T18:56:40.235Z\",\n        \"updatedAt\": \"2024-11-16T18:56:40.235Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"936dfa9d-f959-4318-84dd-c6dfa99d2f5c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"delectus veniam ut\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57939400000000000000000000\",\n        \"longitud\": \"-74.21406200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:50.834Z\",\n        \"createdAt\": \"2024-11-16T18:56:50.834Z\",\n        \"updatedAt\": \"2024-11-16T18:56:50.834Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"8bbe49aa-bd7f-4fcf-88d3-cf466a0537fb\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"voluptatem\",\n        \"categoria\": \"Asalto en transporte público\",\n        \"latitud\": \"4.57231300000000000000000000\",\n        \"longitud\": \"-74.22019000000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:54.234Z\",\n        \"createdAt\": \"2024-11-16T18:56:54.234Z\",\n        \"updatedAt\": \"2024-11-16T18:56:54.235Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"84f4301f-fe7c-4680-baa3-f982ea7b36de\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Ut voluptates assumenda. Commodi et debitis aliquid possimus quia. Nisi beatae earum fugit necessitatibus officiis. Excepturi est unde.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.58193600000000000000000000\",\n        \"longitud\": \"-74.21044200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:56.977Z\",\n        \"createdAt\": \"2024-11-16T18:56:56.977Z\",\n        \"updatedAt\": \"2024-11-16T18:56:56.977Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"601e6cee-0326-4850-ac4c-d6427c46b5fd\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Eos quibusdam quasi pariatur reiciendis sunt omnis et quis rerum. Sed voluptatum dolor.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57252300000000000000000000\",\n        \"longitud\": \"-74.20567800000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:02.204Z\",\n        \"createdAt\": \"2024-11-16T18:57:02.204Z\",\n        \"updatedAt\": \"2024-11-16T18:57:02.204Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"28ee7809-8595-429c-ae9b-81c3b3f248b9\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Odio vitae vero reiciendis repellendus perspiciatis qui perferendis similique. Voluptas a neque unde officiis velit delectus nam. Ut delectus nam. Quia adipisci cupiditate. Autem consequuntur maxime.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.57944900000000000000000000\",\n        \"longitud\": \"-74.22103700000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:09.922Z\",\n        \"createdAt\": \"2024-11-16T18:57:09.922Z\",\n        \"updatedAt\": \"2024-11-16T18:57:09.923Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"e5655044-ed2e-423c-b25e-d6d136b16949\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"quae\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57041800000000000000000000\",\n        \"longitud\": \"-74.21486200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:14.474Z\",\n        \"createdAt\": \"2024-11-16T18:57:14.474Z\",\n        \"updatedAt\": \"2024-11-16T18:57:14.474Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"9ab0aa05-3bfd-4d84-a355-19492f230072\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Et culpa commodi odit. Distinctio iusto magni rerum odio suscipit debitis pariatur delectus. Culpa sit minus eaque quo voluptas. Voluptas eaque non pariatur quis aut est. Sit vel rerum et iste omnis consequatur nisi laboriosam aut.\",\n        \"categoria\": \"Robo\",\n        \"latitud\": \"4.58081900000000000000000000\",\n        \"longitud\": \"-74.21725200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:18.896Z\",\n        \"createdAt\": \"2024-11-16T18:57:18.896Z\",\n        \"updatedAt\": \"2024-11-16T18:57:18.896Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Incidunt commodi et error. Error libero voluptatem maxime similique. Earum quasi voluptate quasi quod libero sint reiciendis. Architecto pariatur facilis facilis sint. Tenetur aut amet. Nihil inventore deserunt molestias iste eius sit in.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57906400000000000000000000\",\n        \"longitud\": \"-74.21057400000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:26.310Z\",\n        \"createdAt\": \"2024-11-16T18:57:26.310Z\",\n        \"updatedAt\": \"2024-11-16T18:57:26.310Z\",\n        \"ratings\": [\n            {\n                \"id\": \"952eb68b-8550-47f2-98d7-6a8f63ba1f0e\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 5,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:12.104Z\",\n                \"createdAt\": \"2024-11-16T21:51:12.104Z\",\n                \"updatedAt\": \"2024-11-16T21:51:12.105Z\"\n            },\n            {\n                \"id\": \"3b9275da-a146-4c75-9214-cedce09cc627\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"cross-platform\",\n                \"fechaCreacion\": \"2024-11-16T21:51:14.152Z\",\n                \"createdAt\": \"2024-11-16T21:51:14.152Z\",\n                \"updatedAt\": \"2024-11-16T21:51:14.152Z\"\n            },\n            {\n                \"id\": \"fabe774e-9e42-4f53-a129-b0a6a51476d2\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 5,\n                \"comentario\": \"auxiliary\",\n                \"fechaCreacion\": \"2024-11-16T21:51:16.020Z\",\n                \"createdAt\": \"2024-11-16T21:51:16.020Z\",\n                \"updatedAt\": \"2024-11-16T21:51:16.021Z\"\n            },\n            {\n                \"id\": \"b243c56b-8a46-4012-8b77-f32a30bb30fa\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"primary\",\n                \"fechaCreacion\": \"2024-11-16T21:51:17.838Z\",\n                \"createdAt\": \"2024-11-16T21:51:17.838Z\",\n                \"updatedAt\": \"2024-11-16T21:51:17.838Z\"\n            },\n            {\n                \"id\": \"1e9dba0a-9247-4a3e-9077-4a7b3863a3a2\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 2,\n                \"comentario\": \"auxiliary\",\n                \"fechaCreacion\": \"2024-11-16T21:51:19.142Z\",\n                \"createdAt\": \"2024-11-16T21:51:19.142Z\",\n                \"updatedAt\": \"2024-11-16T21:51:19.142Z\"\n            },\n            {\n                \"id\": \"60e5b8cb-1980-4df3-b2e9-8d2d352dc8f0\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 4,\n                \"comentario\": \"solid state\",\n                \"fechaCreacion\": \"2024-11-16T21:51:21.308Z\",\n                \"createdAt\": \"2024-11-16T21:51:21.308Z\",\n                \"updatedAt\": \"2024-11-16T21:51:21.308Z\"\n            },\n            {\n                \"id\": \"080c4c9c-522d-4d29-a54c-53f72a7a2f21\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 4,\n                \"comentario\": \"digital\",\n                \"fechaCreacion\": \"2024-11-16T21:51:22.828Z\",\n                \"createdAt\": \"2024-11-16T21:51:22.828Z\",\n                \"updatedAt\": \"2024-11-16T21:51:22.828Z\"\n            },\n            {\n                \"id\": \"69fa7327-0f13-4910-a23b-faf6dcd75731\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:23.960Z\",\n                \"createdAt\": \"2024-11-16T21:51:23.960Z\",\n                \"updatedAt\": \"2024-11-16T21:51:23.960Z\"\n            },\n            {\n                \"id\": \"494b8537-ae2b-4e21-9462-24917084127e\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 2,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:28.130Z\",\n                \"createdAt\": \"2024-11-16T21:51:28.130Z\",\n                \"updatedAt\": \"2024-11-16T21:51:28.130Z\"\n            },\n            {\n                \"id\": \"9962165b-0f8f-46a8-a660-c3ea17491ca8\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 1,\n                \"comentario\": \"1080p\",\n                \"fechaCreacion\": \"2024-11-16T21:51:29.817Z\",\n                \"createdAt\": \"2024-11-16T21:51:29.817Z\",\n                \"updatedAt\": \"2024-11-16T21:51:29.817Z\"\n            },\n            {\n                \"id\": \"aa808e5e-d002-443b-a99f-830ad4ad2e91\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 3,\n                \"comentario\": \"haptic\",\n                \"fechaCreacion\": \"2024-11-16T21:51:34.462Z\",\n                \"createdAt\": \"2024-11-16T21:51:34.462Z\",\n                \"updatedAt\": \"2024-11-16T21:51:34.462Z\"\n            },\n            {\n                \"id\": \"f9354f5b-35cc-4543-acee-b7088278a70b\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 4,\n                \"comentario\": \"solid state\",\n                \"fechaCreacion\": \"2024-11-16T21:51:36.493Z\",\n                \"createdAt\": \"2024-11-16T21:51:36.494Z\",\n                \"updatedAt\": \"2024-11-16T21:51:36.494Z\"\n            },\n            {\n                \"id\": \"5258e5fa-3cd1-40ce-abc0-52c58262fd52\",\n                \"reporteId\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n                \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n                \"valor\": 2,\n                \"comentario\": \"digital\",\n                \"fechaCreacion\": \"2024-11-16T21:46:26.548Z\",\n                \"createdAt\": \"2024-11-16T21:46:26.548Z\",\n                \"updatedAt\": \"2024-11-16T22:15:15.637Z\"\n            }\n        ]\n    },\n    {\n        \"id\": \"13db69bc-8152-4769-b3f7-7d7af9669658\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Laboriosam nostrum enim. Aperiam laborum dolores vel sint. Suscipit facilis quia quia ea amet fugit ut debitis. Dolores sequi mollitia ea.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.57606896096619900000000000\",\n        \"longitud\": \"-74.20625934050766000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:03:14.945Z\",\n        \"createdAt\": \"2024-11-16T19:03:14.945Z\",\n        \"updatedAt\": \"2024-11-16T19:03:14.945Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"a90de6cb-a2d3-4dc8-a52c-2262ca8cd0d1\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"ipsam\",\n        \"categoria\": \"Drogadicción\",\n        \"latitud\": \"4.58252979892958800000000000\",\n        \"longitud\": \"-74.22053529058005000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:30.943Z\",\n        \"createdAt\": \"2024-11-16T19:04:30.943Z\",\n        \"updatedAt\": \"2024-11-16T19:04:30.944Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"da3a9891-84a9-4a16-a892-bc53ea4164f4\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Consequuntur eaque non aut sed accusantium. Nesciunt expedita voluptatibus fugit necessitatibus eligendi ut dolores voluptatem. Iusto ut eos vitae quibusdam sed illo est illo.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.56751097027122800000000000\",\n        \"longitud\": \"-74.22070091655665000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:34.708Z\",\n        \"createdAt\": \"2024-11-16T19:04:34.708Z\",\n        \"updatedAt\": \"2024-11-16T19:04:34.708Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"4d3eeed5-67bd-44b6-a348-6232c5475165\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Nemo atque quis magni. Enim pariatur laborum praesentium optio velit magnam dolor. Fugiat dolor ut qui voluptate et vel voluptas. Amet doloribus dolor quo natus non dolorem.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.57222110572138350000000000\",\n        \"longitud\": \"-74.22116916308462000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:37.591Z\",\n        \"createdAt\": \"2024-11-16T19:04:37.591Z\",\n        \"updatedAt\": \"2024-11-16T19:04:37.591Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"749cd2d7-282e-4ecb-923e-1c8c2986321c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"modi\",\n        \"categoria\": \"Asalto en transporte público\",\n        \"latitud\": \"4.58026198047801300000000000\",\n        \"longitud\": \"-74.21238349731848000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:38.725Z\",\n        \"createdAt\": \"2024-11-16T19:04:38.725Z\",\n        \"updatedAt\": \"2024-11-16T19:04:38.725Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"1790b304-19d9-40b3-91d1-971337068348\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Quia est laborum facilis omnis alias dolorem quis.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.56753945392566700000000000\",\n        \"longitud\": \"-74.21383218742598000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:05:40.629Z\",\n        \"createdAt\": \"2024-11-16T19:05:40.629Z\",\n        \"updatedAt\": \"2024-11-16T19:05:40.629Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"b6c4827f-f9f9-489b-bba2-7243b320a459\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"At consectetur quas est occaecati et ad.\",\n        \"categoria\": \"Robo\",\n        \"latitud\": \"4.57435465844518400000000000\",\n        \"longitud\": \"-74.21381836930105000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:06:07.832Z\",\n        \"createdAt\": \"2024-11-16T19:06:07.832Z\",\n        \"updatedAt\": \"2024-11-16T19:06:07.832Z\",\n        \"ratings\": []\n    },\n    {\n        \"id\": \"8b4d1168-20c8-4b0a-ae28-aa78cb30c32c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"enim\",\n        \"categoria\": \"Vandalismo\",\n        \"latitud\": \"4.58383216268944200000000000\",\n        \"longitud\": \"-74.21297846309724000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:06:24.575Z\",\n        \"createdAt\": \"2024-11-16T19:06:24.575Z\",\n        \"updatedAt\": \"2024-11-16T19:06:24.575Z\",\n        \"ratings\": []\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "REPORTES",
+					"item": [
+						{
+							"name": "/api/reportes",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generarCategoriaAleatoria() {\r",
+											"    const categorias = ['Iluminación', 'Robo', 'Vandalismo', 'Drogadicción', 'Vías en mal estado', 'Asalto en transporte público', 'Esquina peligrosa'];\r",
+											"    // Extraer un ítem aleatorio de la variable \"categorias\"\r",
+											"    let randomCategoria = categorias[Math.floor(Math.random() * categorias.length)];\r",
+											"    return randomCategoria;\r",
+											"}\r",
+											"\r",
+											"function generarCoordenadaAleatoria(lat, lon) {\r",
+											"    // Aproximación de grados por 1 km\r",
+											"    const kmToDegLat = 1 / 111; // 1 km en grados de latitud\r",
+											"    const kmToDegLon = 1 / (111 * Math.cos(Math.PI * lat / 180)); // Ajuste para longitud basado en latitud\r",
+											"\r",
+											"    // Generar un desplazamiento aleatorio dentro de un rango de -1 km a 1 km\r",
+											"    const deltaLat = (Math.random() * 2 - 1) * kmToDegLat;\r",
+											"    const deltaLon = (Math.random() * 2 - 1) * kmToDegLon;\r",
+											"\r",
+											"    // Nueva coordenada aleatoria\r",
+											"    const newLat = lat + deltaLat;\r",
+											"    const newLon = lon + deltaLon;\r",
+											"\r",
+											"    return { lat: newLat, lon: newLon };\r",
+											"}\r",
+											"\r",
+											"// Coordenadas iniciales\r",
+											"const latitud = parseFloat(pm.collectionVariables.get(\"baseLatitud\"));\r",
+											"const longitud = parseFloat(pm.collectionVariables.get(\"baseLongitud\"));\r",
+											"\r",
+											"console.log(longitud);\r",
+											"\r",
+											"// Generar una nueva coordenada aleatoria\r",
+											"const nuevaCoordenada = generarCoordenadaAleatoria(latitud, longitud);\r",
+											"\r",
+											"// console.log(`Nueva Latitud: ${nuevaCoordenada.lat}`);\r",
+											"// console.log(`Nueva Longitud: ${nuevaCoordenada.lon}`);\r",
+											"\r",
+											"// Almacenar el ítem aleatorio en la variable de colección \"categoria\"\r",
+											"pm.collectionVariables.set(\"categoria\", generarCategoriaAleatoria());\r",
+											"pm.collectionVariables.set(\"latitud\", nuevaCoordenada.lat);\r",
+											"pm.collectionVariables.set(\"longitud\", nuevaCoordenada.lon);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descripcion\": \"{{$randomLoremText}}\",\n    \"latitud\": {{latitud}},\n    \"longitud\": {{longitud}},\n    \"categoria\": \"{{categoria}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_prod}}/api/reportes",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"reportes"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/reportes",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host_prba}}/api/reportes",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"reportes"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "344"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"158-6+Sofl/JmsnotQr5mRNXj+2NPPE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 18:02:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"createdAt\": \"2024-11-16T18:02:28.476Z\",\n    \"updatedAt\": \"2024-11-16T18:02:28.478Z\",\n    \"id\": \"58d7d518-58b9-4e4d-bc2b-e523602feaaa\",\n    \"fechaCreacion\": \"2024-11-16T18:02:28.475Z\",\n    \"descripcion\": \"Descripción del incidente\",\n    \"latitud\": \"12.345678\",\n    \"longitud\": \"98.765432\",\n    \"categoria\": \"Categoría del incidente\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/reportes",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generarCoordenadaAleatoria(lat, lon) {\r",
+											"    const rango = Math.random();\r",
+											"    console.log(`Rango: ${rango}`);\r",
+											"    // Aproximación de grados \r",
+											"    const kmToDegLat = rango / 111; // 1 km en grados de latitud\r",
+											"    const kmToDegLon = rango / (111 * Math.cos(Math.PI * lat / 180)); // Ajuste para longitud basado en latitud\r",
+											"\r",
+											"    // Generar un desplazamiento aleatorio dentro de un rango de -1 km a 1 km\r",
+											"    const deltaLat = (Math.random() * 2 - rango) * kmToDegLat;\r",
+											"    const deltaLon = (Math.random() * 2 - rango) * kmToDegLon;\r",
+											"\r",
+											"    // Nueva coordenada aleatoria\r",
+											"    const newLat = lat + deltaLat;\r",
+											"    const newLon = lon + deltaLon;\r",
+											"\r",
+											"    return { lat: newLat, lon: newLon };\r",
+											"}\r",
+											"\r",
+											"// Coordenadas iniciales\r",
+											"const latitud = parseFloat(pm.collectionVariables.get(\"baseLatitud\"));\r",
+											"const longitud = parseFloat(pm.collectionVariables.get(\"baseLongitud\"));\r",
+											"// const latitud = 4.575000;\r",
+											"// const longitud = -74.214000;\r",
+											"\r",
+											"// Generar una nueva coordenada aleatoria\r",
+											"const nuevaCoordenada = generarCoordenadaAleatoria(latitud, longitud);\r",
+											"\r",
+											"pm.collectionVariables.set(\"latitud\", nuevaCoordenada.lat);\r",
+											"pm.collectionVariables.set(\"longitud\", nuevaCoordenada.lon);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/reportes?latitud={{latitud}}&longitud={{longitud}}&rango=1",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "latitud",
+											"value": "{{latitud}}"
+										},
+										{
+											"key": "longitud",
+											"value": "{{longitud}}"
+										},
+										{
+											"key": "rango",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/reportes",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/reportes?latitud={{latitud}}&longitud={{longitud}}&rango=1",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"reportes"
+											],
+											"query": [
+												{
+													"key": "latitud",
+													"value": "{{latitud}}"
+												},
+												{
+													"key": "longitud",
+													"value": "{{longitud}}"
+												},
+												{
+													"key": "rango",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "4538"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"11ba-z02tbX78vHaxI32gh+mQc6iR8ug\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:43:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"936dfa9d-f959-4318-84dd-c6dfa99d2f5c\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"delectus veniam ut\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57939400000000000000000000\",\n        \"longitud\": \"-74.21406200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:50.834Z\",\n        \"createdAt\": \"2024-11-16T18:56:50.834Z\",\n        \"updatedAt\": \"2024-11-16T18:56:50.834Z\",\n        \"distanciaLineal\": 1060.89728726091,\n        \"rating\": null\n    },\n    {\n        \"id\": \"8bbe49aa-bd7f-4fcf-88d3-cf466a0537fb\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"voluptatem\",\n        \"categoria\": \"Asalto en transporte público\",\n        \"latitud\": \"4.57231300000000000000000000\",\n        \"longitud\": \"-74.22019000000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:56:54.234Z\",\n        \"createdAt\": \"2024-11-16T18:56:54.234Z\",\n        \"updatedAt\": \"2024-11-16T18:56:54.235Z\",\n        \"distanciaLineal\": 268.49359568507225,\n        \"rating\": null\n    },\n    {\n        \"id\": \"28ee7809-8595-429c-ae9b-81c3b3f248b9\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Odio vitae vero reiciendis repellendus perspiciatis qui perferendis similique. Voluptas a neque unde officiis velit delectus nam. Ut delectus nam. Quia adipisci cupiditate. Autem consequuntur maxime.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.57944900000000000000000000\",\n        \"longitud\": \"-74.22103700000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:09.922Z\",\n        \"createdAt\": \"2024-11-16T18:57:09.922Z\",\n        \"updatedAt\": \"2024-11-16T18:57:09.923Z\",\n        \"distanciaLineal\": 1006.0565263516352,\n        \"rating\": null\n    },\n    {\n        \"id\": \"e5655044-ed2e-423c-b25e-d6d136b16949\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"quae\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57041800000000000000000000\",\n        \"longitud\": \"-74.21486200000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:14.474Z\",\n        \"createdAt\": \"2024-11-16T18:57:14.474Z\",\n        \"updatedAt\": \"2024-11-16T18:57:14.474Z\",\n        \"distanciaLineal\": 381.50252976188335,\n        \"rating\": null\n    },\n    {\n        \"id\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Incidunt commodi et error. Error libero voluptatem maxime similique. Earum quasi voluptate quasi quod libero sint reiciendis. Architecto pariatur facilis facilis sint. Tenetur aut amet. Nihil inventore deserunt molestias iste eius sit in.\",\n        \"categoria\": \"Esquina peligrosa\",\n        \"latitud\": \"4.57906400000000000000000000\",\n        \"longitud\": \"-74.21057400000000000000000000\",\n        \"fechaCreacion\": \"2024-11-16T18:57:26.310Z\",\n        \"createdAt\": \"2024-11-16T18:57:26.310Z\",\n        \"updatedAt\": \"2024-11-16T18:57:26.310Z\",\n        \"distanciaLineal\": 1252.1377638734668,\n        \"rating\": 3.1538461538461537\n    },\n    {\n        \"id\": \"da3a9891-84a9-4a16-a892-bc53ea4164f4\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Consequuntur eaque non aut sed accusantium. Nesciunt expedita voluptatibus fugit necessitatibus eligendi ut dolores voluptatem. Iusto ut eos vitae quibusdam sed illo est illo.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.56751097027122800000000000\",\n        \"longitud\": \"-74.22070091655665000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:34.708Z\",\n        \"createdAt\": \"2024-11-16T19:04:34.708Z\",\n        \"updatedAt\": \"2024-11-16T19:04:34.708Z\",\n        \"distanciaLineal\": 456.27813452456036,\n        \"rating\": null\n    },\n    {\n        \"id\": \"4d3eeed5-67bd-44b6-a348-6232c5475165\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Nemo atque quis magni. Enim pariatur laborum praesentium optio velit magnam dolor. Fugiat dolor ut qui voluptate et vel voluptas. Amet doloribus dolor quo natus non dolorem.\",\n        \"categoria\": \"Iluminación\",\n        \"latitud\": \"4.57222110572138350000000000\",\n        \"longitud\": \"-74.22116916308462000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:04:37.591Z\",\n        \"createdAt\": \"2024-11-16T19:04:37.591Z\",\n        \"updatedAt\": \"2024-11-16T19:04:37.591Z\",\n        \"distanciaLineal\": 355.77521530444716,\n        \"rating\": null\n    },\n    {\n        \"id\": \"1790b304-19d9-40b3-91d1-971337068348\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"Quia est laborum facilis omnis alias dolorem quis.\",\n        \"categoria\": \"Vías en mal estado\",\n        \"latitud\": \"4.56753945392566700000000000\",\n        \"longitud\": \"-74.21383218742598000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:05:40.629Z\",\n        \"createdAt\": \"2024-11-16T19:05:40.629Z\",\n        \"updatedAt\": \"2024-11-16T19:05:40.629Z\",\n        \"distanciaLineal\": 613.8029771436267,\n        \"rating\": null\n    },\n    {\n        \"id\": \"b6c4827f-f9f9-489b-bba2-7243b320a459\",\n        \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n        \"descripcion\": \"At consectetur quas est occaecati et ad.\",\n        \"categoria\": \"Robo\",\n        \"latitud\": \"4.57435465844518400000000000\",\n        \"longitud\": \"-74.21381836930105000000000000\",\n        \"fechaCreacion\": \"2024-11-16T19:06:07.832Z\",\n        \"createdAt\": \"2024-11-16T19:06:07.832Z\",\n        \"updatedAt\": \"2024-11-16T19:06:07.832Z\",\n        \"distanciaLineal\": 630.9874755917133,\n        \"rating\": null\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/reportes/:id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/reportes/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"reportes",
+										"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": [
+								{
+									"name": "/api/reportes/:id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer YOUR_TOKEN"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{host_prba}}/api/reportes/8ec8978e-78da-49b8-9c2c-7d5442e00231",
+											"host": [
+												"{{host_prba}}"
+											],
+											"path": [
+												"api",
+												"reportes",
+												"8ec8978e-78da-49b8-9c2c-7d5442e00231"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "617"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"269-J5d5Q/meIHEXshGdHUGB1VVmlUs\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Nov 2024 22:42:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"8ec8978e-78da-49b8-9c2c-7d5442e00231\",\n    \"usuarioId\": \"2d290d17-c462-4888-93e1-784ae20755b2\",\n    \"descripcion\": \"Incidunt commodi et error. Error libero voluptatem maxime similique. Earum quasi voluptate quasi quod libero sint reiciendis. Architecto pariatur facilis facilis sint. Tenetur aut amet. Nihil inventore deserunt molestias iste eius sit in.\",\n    \"categoria\": \"Esquina peligrosa\",\n    \"latitud\": \"4.57906400000000000000000000\",\n    \"longitud\": \"-74.21057400000000000000000000\",\n    \"fechaCreacion\": \"2024-11-16T18:57:26.310Z\",\n    \"createdAt\": \"2024-11-16T18:57:26.310Z\",\n    \"updatedAt\": \"2024-11-16T18:57:26.310Z\",\n    \"rating\": 3.1538461538461537\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/reportes/{{id}}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenVC}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_TOKEN"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host_prod}}/api/reportes/fdea7a7e-abe0-447d-9fad-f07bd17d15c3",
+									"host": [
+										"{{host_prod}}"
+									],
+									"path": [
+										"api",
+										"reportes",
+										"fdea7a7e-abe0-447d-9fad-f07bd17d15c3"
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://localhost:3000/api/reportes \\\n-H \"Authorization: Bearer YOUR_TOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\n    \"descripcion\": \"Descripción del incidente\",\n    \"direccion\": \"Dirección del incidente\",\n    \"latitud\": 12.345678,\n    \"longitud\": 98.765432,\n    \"categoria\": \"Categoría del incidente\"\n}'"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host_prba",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host_prod",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "tokenVC",
+			"value": ""
+		},
+		{
+			"key": "categoria",
+			"value": ""
+		},
+		{
+			"key": "latitud",
+			"value": ""
+		},
+		{
+			"key": "longitud",
+			"value": ""
+		},
+		{
+			"key": "rating",
+			"value": ""
+		},
+		{
+			"key": "baseLatitud",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "baseLongitud",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
