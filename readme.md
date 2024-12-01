@@ -368,6 +368,7 @@ pause
 
 ### **2.3. Descripción de alto nivel del proyecto y estructura de ficheros del MVP**
 
+```plaintext
 /backend
 ├── src
 │   ├── application                # Casos de uso / lógica de aplicación
@@ -439,6 +440,7 @@ pause
 ├── Dockerfile                     # Definición del contenedor Docker para el backend
 ├── docker-compose.yml             # Configuración de Docker Compose
 └── package.json                   # Dependencias y scripts del proyecto
+```
 
 **Explicación de la Estructura de Carpetas**
 
