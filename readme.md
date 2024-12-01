@@ -1231,3 +1231,4 @@ Como **usuario registrado**, quiero **reportar problemas de seguridad en mi áre
 
 **Pull Request 3**
 
+- Video de presentación finalizado: https://youtu.be/oSQZlEh7yek
